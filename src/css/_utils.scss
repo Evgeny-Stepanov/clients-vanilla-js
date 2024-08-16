@@ -23,3 +23,15 @@
 		display: none !important;
 	}
 }
+
+@function calc-font-size($n) {
+	@return calc(var(--font-size) * $n);
+}
+
+@function install-border($n, $color) {
+	@return $n solid $color;
+}
+
+@function install-shadow($color) {
+	@return 0px 5px 15px $color;
+}

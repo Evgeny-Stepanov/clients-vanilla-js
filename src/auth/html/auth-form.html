@@ -1,10 +1,10 @@
 <form class="auth__form form form--login">
 	<h2 class="form__title">Вход</h2>
-	<p>
+	<p class="form__input-name">
 		<label for="name" class="visually-hidden">Введите имя</label>
 		<input type="text" name="name" id="name" placeholder="Имя" />
 	</p>
-	<p>
+	<p class="form__input-password">
 		<label for="password" class="visually-hidden">Введите пароль</label>
 		<input type="password" name="password" id="password" placeholder="Пароль" />
 	</p>
@@ -21,25 +21,23 @@
 		</p>
 	</fieldset>
 
-	<p>
-		<input type="checkbox" name="remember" id="remember" />
+	<p class="form__checkbox-remember">
+		<input type="checkbox" name="remember-me" id="remember" />
 		<label for="remember">Запомнить меня</label>
 	</p>
 
 	<button type="submit">Войти</button>
 
-	<p>
-		Нет аккаунта? <span><a href="#">Регистрация</a></span>
-	</p>
+	<p class="form__no-account">Нет аккаунта? <a href="#">Зарегистрировать</a></p>
 </form>
 
-<form class="auth__form form form--registration hidden">
+<form class="auth__form form form--registration">
 	<h2 class="form__title">Регистрация</h2>
-	<p>
+	<p class="form__input-name">
 		<label for="name" class="visually-hidden">Введите имя</label>
 		<input type="text" name="name" id="name" placeholder="Имя" />
 	</p>
-	<p>
+	<p class="form__input-password">
 		<label for="password" class="visually-hidden">Введите пароль</label>
 		<input type="password" name="password" id="password" placeholder="Пароль" />
 	</p>
@@ -56,9 +54,12 @@
 		</p>
 	</fieldset>
 
+	<p class="form__checkbox-remember">
+		<input type="checkbox" name="remember-me" id="remember" />
+		<label for="remember">Запомнить меня</label>
+	</p>
+
 	<button type="submit">Зарегистрировать</button>
 
-	<p>
-		Есть аккаунт? <span><a href="#">Войти</a></span>
-	</p>
+	<p class="form__no-account">Есть аккаунт? <a href="#">Войти</a></p>
 </form>
