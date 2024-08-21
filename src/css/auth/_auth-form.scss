@@ -7,6 +7,7 @@
 		align-items: center;
 	}
 }
+
 .form {
 	padding: 30px;
 	border: install-border(2px, var(--color-gray-dark));
@@ -17,11 +18,30 @@
 	}
 
 	&__input-name {
-		margin-block-start: 20px;
+		margin-top: 20px;
 	}
 
 	&__input-password {
-		margin-block-start: 10px;
+		margin-top: 10px;
+	}
+
+	fieldset {
+		padding: 0 10px 0;
+		margin: 0;
+		margin-top: 20px;
+		width: 100%;
+		border-radius: var(--border-radius-small);
+		border: install-border(2px, var(--color-gray-dark));
+		legend {
+			padding: 0;
+		}
+		p {
+			margin: 10px 0 0 0;
+			input {
+				accent-color: var(--color-accent);
+				margin: 0;
+			}
+		}
 	}
 
 	&__checkbox-remember {
@@ -41,11 +61,25 @@
 	width: 100%;
 	input {
 		border-radius: var(--border-radius-small);
-		padding: 5px;
+		border: install-border(2px, var(--color-gray-dark));
+		padding: 0 0 0 10px;
 		height: 40px;
 		width: 100%;
+		background-color: transparent;
+		color: var(--color-white);
 		&::placeholder {
-			color: var(--color-black);
+			color: var(--color-white);
+		}
+		&:autofill,
+		&:autofill:hover,
+		&:autofill:focus,
+		&:autofill:active,
+		&:-webkit-autofill,
+		&:-webkit-autofill:hover,
+		&:-webkit-autofill:focus,
+		&:-webkit-autofill:active {
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: var(--color-white);
 		}
 	}
 }
