@@ -24,6 +24,40 @@
 		margin-top: calc-font-size(0.625);
 	}
 
+	&__input-name,
+	&__input-password {
+		width: 100%;
+		input {
+			border-radius: var(--border-radius-small);
+			border: install-border(2px, var(--color-gray-dark));
+			padding: 0 calc-font-size(0.625);
+			height: calc-font-size(2.5);
+			width: 100%;
+			background-color: transparent;
+			color: var(--color-white);
+			transition: border-color 0.3s ease 0s;
+			&::placeholder {
+				color: var(--color-white);
+			}
+			&:focus,
+			&:active {
+				outline: none;
+				border-color: var(--color-accent);
+			}
+			&:autofill,
+			&:autofill:hover,
+			&:autofill:focus,
+			&:autofill:active,
+			&:-webkit-autofill,
+			&:-webkit-autofill:hover,
+			&:-webkit-autofill:focus,
+			&:-webkit-autofill:active {
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: var(--color-white);
+			}
+		}
+	}
+
 	fieldset {
 		display: flex;
 		justify-content: space-between;
@@ -32,9 +66,6 @@
 		padding: 0;
 		width: 100%;
 		border: none;
-		legend {
-			padding: 0;
-		}
 		p {
 			margin: 0;
 			input {
@@ -92,44 +123,15 @@
 		a {
 			display: inline-block;
 			color: var(--color-white);
-			transition: transform 0.3s ease;
+			transition: color 0.3s ease;
 			@include hover {
-				transform: scale(1.025);
 				color: var(--color-gray-light);
 			}
 		}
 	}
 }
-.form--login {
-}
+
+//? Почему то не работает через &--registration
 .form--registration {
 	display: none;
-}
-
-.form__input-name,
-.form__input-password {
-	width: 100%;
-	input {
-		border-radius: var(--border-radius-small);
-		border: install-border(2px, var(--color-gray-dark));
-		padding: 0 0 0 calc-font-size(0.625);
-		height: calc-font-size(2.5);
-		width: 100%;
-		background-color: transparent;
-		color: var(--color-white);
-		&::placeholder {
-			color: var(--color-white);
-		}
-		&:autofill,
-		&:autofill:hover,
-		&:autofill:focus,
-		&:autofill:active,
-		&:-webkit-autofill,
-		&:-webkit-autofill:hover,
-		&:-webkit-autofill:focus,
-		&:-webkit-autofill:active {
-			-webkit-background-clip: text;
-			-webkit-text-fill-color: var(--color-white);
-		}
-	}
 }
