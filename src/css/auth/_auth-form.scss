@@ -66,12 +66,57 @@
 		padding: 0;
 		width: 100%;
 		border: none;
-		p {
+		p,
+		input {
 			margin: 0;
-			input {
-				accent-color: var(--color-accent);
-				margin: 0;
+		}
+	}
+
+	&__input-radio {
+		display: block;
+		position: relative;
+		padding-left: calc-font-size(1.4);
+		font-size: calc-font-size(1);
+		user-select: none;
+		input {
+			position: absolute;
+			opacity: 0;
+			height: 0;
+			width: 0;
+		}
+		.checkmark {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			left: 0;
+			width: calc-font-size(0.94);
+			height: calc-font-size(0.94);
+			background-color: var(--color-white);
+			border-radius: 50%;
+			&::after {
+				content: "";
+				position: absolute;
+				display: none;
 			}
+		}
+		&:hover input ~ .checkmark {
+			background-color: var(--color-gray-light);
+		}
+		& input:checked ~ .checkmark {
+			background-color: transparent;
+			border: install-border(1px, var(--color-accent));
+		}
+		& input:checked ~ .checkmark::after {
+			display: block;
+		}
+		& .checkmark::after {
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: calc-font-size(0.5);
+			height: calc-font-size(0.5);
+			border-radius: 50%;
+			background: var(--color-accent);
 		}
 	}
 
