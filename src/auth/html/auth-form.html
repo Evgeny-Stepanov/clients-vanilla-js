@@ -28,8 +28,11 @@
 	</fieldset>
 
 	<p class="form__checkbox-remember">
-		<input type="checkbox" name="remember-me" id="remember" />
-		<label for="remember">Запомнить меня</label>
+		<label for="remember" class="form__input-checkbox"
+			>Запомнить меня
+			<input type="checkbox" name="remember-me" id="remember" checked />
+			<span class="checkmark"></span>
+		</label>
 	</p>
 
 	<button type="submit">Войти</button>
@@ -51,12 +54,18 @@
 	<fieldset>
 		<legend class="visually-hidden">Кто Вы?</legend>
 		<p>
-			<input type="radio" name="who" id="client" value="client" checked />
-			<label for="client">Клиент</label>
+			<label for="client" class="form__input-radio"
+				>Клиент
+				<input type="radio" name="who" id="client" value="client" checked />
+				<span class="checkmark"></span>
+			</label>
 		</p>
 		<p>
-			<input type="radio" name="who" id="admin" value="admin" />
-			<label for="admin">Администратор</label>
+			<label for="admin" class="form__input-radio"
+				>Администратор
+				<input type="radio" name="who" id="admin" value="admin" />
+				<span class="checkmark"></span>
+			</label>
 		</p>
 	</fieldset>
 

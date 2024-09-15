@@ -66,20 +66,21 @@
 		padding: 0;
 		width: 100%;
 		border: none;
-		p,
-		input {
+		p {
 			margin: 0;
 		}
 	}
 
-	&__input-radio {
+	&__input-radio,
+	&__input-checkbox {
 		display: block;
 		position: relative;
-		padding-left: calc-font-size(1.4);
+		padding-left: calc-font-size(1.56);
 		font-size: calc-font-size(1);
 		user-select: none;
 		input {
 			position: absolute;
+			margin: 0;
 			opacity: 0;
 			height: 0;
 			width: 0;
@@ -89,8 +90,11 @@
 			top: 50%;
 			transform: translateY(-50%);
 			left: 0;
-			width: calc-font-size(0.94);
-			height: calc-font-size(0.94);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: calc-font-size(1.25);
+			height: calc-font-size(1.25);
 			background-color: var(--color-white);
 			border-radius: 50%;
 			&::after {
@@ -104,28 +108,37 @@
 		}
 		& input:checked ~ .checkmark {
 			background-color: transparent;
-			border: install-border(1px, var(--color-accent));
+			border: install-border(2px, var(--color-accent));
 		}
 		& input:checked ~ .checkmark::after {
 			display: block;
 		}
 		& .checkmark::after {
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			width: calc-font-size(0.5);
-			height: calc-font-size(0.5);
-			border-radius: 50%;
+			width: calc(var(--font-size) * 0.625);
+			height: calc(var(--font-size) * 0.625);
 			background: var(--color-accent);
+			border-radius: 50%;
 		}
 	}
 
 	&__checkbox-remember {
 		margin-top: calc-font-size(0.94);
 		align-self: flex-start;
-		input {
-			accent-color: var(--color-accent);
-			margin: 0;
+	}
+
+	&__input-checkbox {
+		.checkmark {
+			padding-bottom: calc-font-size(0.1875);
+			border-radius: 0;
+			&::after {
+				width: calc(var(--font-size) * 0.4375);
+				height: calc(var(--font-size) * 0.75);
+				border: solid var(--color-accent);
+				border-width: 0 3px 3px 0;
+				border-radius: 0;
+				background-color: transparent;
+				transform: rotate(45deg);
+			}
 		}
 	}
 
