@@ -18,19 +18,43 @@
 
 	&__input-name {
 		margin-top: calc-font-size(1.25);
+		span {
+			svg {
+				path {
+					fill: var(--color-white);
+				}
+			}
+		}
 	}
 
 	&__input-password {
 		margin-top: calc-font-size(0.625);
+		span {
+			svg {
+				path {
+					fill: var(--color-white);
+				}
+			}
+		}
 	}
 
 	&__input-name,
 	&__input-password {
+		position: relative;
 		width: 100%;
+		span {
+			display: inline-block;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			right: 12px;
+			width: 20px;
+			height: 20px;
+		}
 		input {
 			border-radius: var(--border-radius-small);
 			border: install-border(2px, var(--color-gray-dark));
-			padding: 0 calc-font-size(0.625);
+			padding: 0 calc-font-size(2.5) 0 calc-font-size(0.625);
 			height: calc-font-size(2.5);
 			width: 100%;
 			background-color: transparent;
