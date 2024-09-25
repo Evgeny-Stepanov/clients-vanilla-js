@@ -127,8 +127,10 @@
 				display: none;
 			}
 		}
-		&:hover input ~ .checkmark {
-			background-color: var(--color-gray-light);
+		@include hover {
+			input ~ .checkmark {
+				background-color: var(--color-gray-light);
+			}
 		}
 		& input:checked ~ .checkmark {
 			background-color: transparent;
@@ -213,7 +215,6 @@
 	}
 }
 
-//? Почему то не работает через &--registration
 .form--registration {
 	display: none;
 }
