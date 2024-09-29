@@ -2,12 +2,12 @@
 	<h2 class="form__title">Вход</h2>
 	<p class="form__input-name">
 		<label for="name" class="visually-hidden">Введите имя</label>
-		<input type="text" name="name" id="name" placeholder="Имя" />
+		<input type="text" name="name" id="name" placeholder="Имя" data-focus />
 		<span>
 			<?xml version="1.0" encoding="utf-8"?>
 			<svg
-				width="20px"
-				height="20px"
+				width="30px"
+				height="30px"
 				viewBox="0 0 16 16"
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
@@ -25,12 +25,18 @@
 	</p>
 	<p class="form__input-password">
 		<label for="password" class="visually-hidden">Введите пароль</label>
-		<input type="password" name="password" id="password" placeholder="Пароль" />
+		<input
+			type="password"
+			name="password"
+			id="password"
+			placeholder="Пароль"
+			data-focus
+		/>
 		<span>
 			<?xml version="1.0" encoding="utf-8"?>
 			<svg
-				width="20px"
-				height="20px"
+				width="30px"
+				height="30px"
 				viewBox="0 0 16 16"
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"
@@ -54,15 +60,22 @@
 		<p>
 			<label for="client" class="form__input-radio"
 				>Клиент
-				<input type="radio" name="who" id="client" value="client" checked />
-				<span class="checkmark"></span>
+				<input
+					tabindex="-1"
+					type="radio"
+					name="who"
+					id="client"
+					value="client"
+					checked
+				/>
+				<span tabindex="0" class="checkmark"></span>
 			</label>
 		</p>
 		<p>
 			<label for="admin" class="form__input-radio"
 				>Администратор
-				<input type="radio" name="who" id="admin" value="admin" />
-				<span class="checkmark"></span>
+				<input tabindex="-1" type="radio" name="who" id="admin" value="admin" />
+				<span tabindex="0" class="checkmark"></span>
 			</label>
 		</p>
 	</fieldset>
@@ -70,8 +83,14 @@
 	<p class="form__checkbox-remember">
 		<label for="remember" class="form__input-checkbox"
 			>Запомнить меня
-			<input type="checkbox" name="remember-me" id="remember" checked />
-			<span class="checkmark"></span>
+			<input
+				tabindex="-1"
+				type="checkbox"
+				name="remember-me"
+				id="remember"
+				checked
+			/>
+			<span tabindex="0" class="checkmark"></span>
 		</label>
 	</p>
 
