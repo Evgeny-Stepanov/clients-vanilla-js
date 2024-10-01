@@ -23,7 +23,7 @@
 				pointer-events: none;
 				height: 0;
 				overflow: hidden;
-				transition: height 0.3s ease 0s;
+				transition: install-transition(height);
 				-webkit-text-fill-color: var(--color-accent);
 				-webkit-text-stroke-width: 1px;
 				-webkit-text-stroke-color: var(--color-accent);

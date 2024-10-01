@@ -16,17 +16,6 @@
 		font-size: calc-font-size(1.5);
 	}
 
-	&__input-name {
-		margin-top: calc-font-size(1.25);
-	}
-
-	&__input-password {
-		margin-top: calc-font-size(0.625);
-		svg {
-			cursor: pointer;
-		}
-	}
-
 	&__input-name,
 	&__input-password {
 		position: relative;
@@ -36,15 +25,11 @@
 			position: absolute;
 			top: 50%;
 			transform: translateY(-50%);
-			right: 12px;
-			width: 20px;
-			height: 20px;
+			right: calc-font-size(0.75);
 			svg {
-				width: calc-font-size(1.25);
-				height: calc-font-size(1.25);
 				path {
+					transition: install-transition(fill);
 					fill: var(--color-white);
-					transition: fill 0.3s ease 0s;
 				}
 			}
 		}
@@ -56,7 +41,7 @@
 			width: 100%;
 			background-color: transparent;
 			color: var(--color-white);
-			transition: border-color 0.3s ease 0s;
+			transition: install-transition(border-color);
 			&::placeholder {
 				color: var(--color-white);
 			}
@@ -76,6 +61,26 @@
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: var(--color-white);
 			}
+		}
+	}
+
+	&__input-name {
+		margin-top: calc-font-size(1.25);
+	}
+
+	&__input-password {
+		margin-top: calc-font-size(0.625);
+		svg {
+			cursor: pointer;
+		}
+	}
+
+	&__input-name,
+	&__input-password {
+		span,
+		svg {
+			width: calc-font-size(1.25);
+			height: calc-font-size(1.25);
 		}
 	}
 
@@ -106,7 +111,7 @@
 			height: 0;
 			width: 0;
 		}
-		.checkmark {
+		&-checkmark {
 			position: absolute;
 			top: 50%;
 			transform: translateY(-50%);
@@ -125,18 +130,21 @@
 			}
 		}
 		@include hover {
-			input ~ .checkmark {
+			input ~ .form__input-radio-checkmark,
+			input ~ .form__input-checkbox-checkmark {
 				background-color: var(--color-gray-light);
 			}
 		}
-		& input:checked ~ .checkmark {
+		& input:checked ~ .form__input-radio-checkmark,
+		& input:checked ~ .form__input-checkbox-checkmark {
 			background-color: transparent;
 			border: install-border(2px, var(--color-accent));
 		}
-		& input:checked ~ .checkmark::after {
+		& input:checked ~ .form__input-radio-checkmark::after,
+		& input:checked ~ .form__input-checkbox-checkmark::after {
 			display: block;
 		}
-		& .checkmark::after {
+		& .form__input-radio-checkmark::after {
 			width: calc(var(--font-size) * 0.625);
 			height: calc(var(--font-size) * 0.625);
 			background: var(--color-accent);
@@ -150,13 +158,14 @@
 	}
 
 	&__input-checkbox {
-		.checkmark {
+		&-checkmark {
 			padding-bottom: calc-font-size(0.1875);
 			border-radius: 0;
 			&::after {
 				width: calc(var(--font-size) * 0.4375);
 				height: calc(var(--font-size) * 0.75);
 				border: solid var(--color-accent);
+				//! Leave the border-width fixed, otherwise it looks worse when changing --font-size
 				border-width: 0 3px 3px 0;
 				border-radius: 0;
 				background-color: transparent;
@@ -176,7 +185,7 @@
 		border-radius: var(--border-radius-small);
 		background-color: transparent;
 		color: var(--color-white);
-		transition: box-shadow 0.3s ease 0s;
+		transition: install-transition(box-shadow);
 		&::before {
 			content: "";
 			display: block;
@@ -189,7 +198,7 @@
 			background-color: var(--color-accent);
 			transform: scaleY(0);
 			transform-origin: 50% 0;
-			transition: transform 0.3s ease 0s;
+			transition: install-transition(transform);
 		}
 		@include hover {
 			box-shadow: install-shadow(var(--color-gray-dark));
@@ -202,9 +211,8 @@
 	&__no-account {
 		margin-top: calc-font-size(0.94);
 		a {
-			display: inline-block;
 			color: var(--color-white);
-			transition: color 0.3s ease;
+			transition: install-transition(color);
 			@include hover {
 				color: var(--color-gray-light);
 			}

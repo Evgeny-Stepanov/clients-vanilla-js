@@ -35,3 +35,7 @@
 @function install-shadow($color) {
 	@return 0px 5px 15px $color;
 }
+
+@function install-transition($property) {
+	@return $property var(--transition-time) ease 0s;
+}
