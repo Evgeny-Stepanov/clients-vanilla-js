@@ -37,5 +37,5 @@
 }
 
 @function install-transition($property) {
-	@return $property var(--transition-time) ease 0s;
+	@return $property var(--transition-duration) ease 0s;
 }
