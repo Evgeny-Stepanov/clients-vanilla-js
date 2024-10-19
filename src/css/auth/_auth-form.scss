@@ -70,8 +70,11 @@
 
 	&__input-password {
 		margin-top: calc-font-size(0.625);
-		svg {
+		span {
 			cursor: pointer;
+			svg {
+				display: none;
+			}
 		}
 	}
 
@@ -228,4 +231,8 @@
 	path {
 		fill: var(--color-accent) !important;
 	}
+}
+
+.is-visible {
+	display: inline !important;
 }
