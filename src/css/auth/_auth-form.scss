@@ -1,17 +1,19 @@
-.auth {
-	&__form {
+.auth__form {
+	&-wrapper {
+		position: relative;
 		max-width: 40%;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
 	}
 }
 
 .form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	padding: calc-font-size(1.875);
 	border: install-border(2px, var(--color-gray-dark));
 	border-radius: var(--border-radius);
 	box-shadow: install-shadow(var(--color-gray-dark));
+
 	&__title {
 		font-size: calc-font-size(1.5);
 	}
@@ -221,10 +223,29 @@
 			}
 		}
 	}
-}
 
-.form--registration {
-	display: none;
+	&--login,
+	&--registration {
+		position: absolute;
+		max-width: 100%;
+		max-height: 100%;
+		transition: install-transition(transform);
+		backface-visibility: hidden;
+	}
+
+	&--login {
+		transform: rotateY(0deg);
+		&.flipped {
+			transform: rotateY(180deg);
+		}
+	}
+
+	&--registration {
+		transform: rotateY(180deg);
+		&.flipped {
+			transform: rotateY(0deg);
+		}
+	}
 }
 
 .is-focus {

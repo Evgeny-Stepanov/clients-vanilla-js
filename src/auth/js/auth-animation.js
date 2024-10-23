@@ -36,10 +36,10 @@ function toggleTypePasswordAndChangeIcon() {
 
 //* Animation of text "Clients" when hovering over a button
 function changeClientsTextColor() {
-	const formButtons = document.querySelectorAll(".form button"),
+	const formSubmitButtons = document.querySelectorAll(".form button"),
 		clientsText = document.querySelector(".auth__title span");
 
-	formButtons.forEach(btn => {
+	formSubmitButtons.forEach(btn => {
 		btn.addEventListener("mouseover", () => {
 			clientsText.classList.add("is-hover");
 		});
@@ -50,6 +50,22 @@ function changeClientsTextColor() {
 	});
 }
 
+//* Form card flipping animation
+function animateCardFlip() {
+	const front = document.querySelector(".form--login"),
+		back = document.querySelector(".form--registration"),
+		formLinks = document.querySelectorAll(".form__no-account a");
+		
+
+	formLinks.forEach(link => {
+		link.addEventListener("click", () => {
+			front.classList.toggle("flipped");
+			back.classList.toggle("flipped");
+		});
+	});
+}
+
 changeInputIconColor();
 toggleTypePasswordAndChangeIcon();
 changeClientsTextColor();
+animateCardFlip();
