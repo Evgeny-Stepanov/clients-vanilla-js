@@ -1,7 +1,12 @@
+//* Trick to cancel transition on page load
+window.addEventListener("load", () => {
+	document.body.classList.remove("preload");
+});
+
 //* Animation on the input icon color when focused
 function changeInputIconColor() {
-	const inputParents = document.querySelectorAll("p[data-login]"),
-		inputs = document.querySelectorAll("p[data-login] input");
+	const inputParents = document.querySelectorAll("p[data-input='parent']"),
+		inputs = document.querySelectorAll("p[data-input='parent'] input");
 
 	inputs.forEach((input, index) => {
 		input.addEventListener("focus", () => {
@@ -16,21 +21,27 @@ function changeInputIconColor() {
 
 //* Toggle password visibility and change the icon
 function toggleTypePasswordAndChangeIcon() {
-	const inputPassword = document.querySelector("input#password"),
-		iconPasswordParent = document.querySelector("input#password ~ span"),
-		iconCloseEye = document.querySelector("svg[data-eye='close']"),
-		iconOpenEye = document.querySelector("svg[data-eye='open']");
+	const inputsPassword = document.querySelectorAll(
+			"input[data-input='password']",
+		),
+		iconPasswordParents = document.querySelectorAll(
+			"input[data-input='password'] ~ span",
+		),
+		iconsCloseEye = document.querySelectorAll("svg[data-eye='close']"),
+		iconsOpenEye = document.querySelectorAll("svg[data-eye='open']");
 
-	iconPasswordParent.addEventListener("click", () => {
-		if (inputPassword.type === "password") {
-			inputPassword.type = "text";
-			iconCloseEye.classList.remove("is-visible");
-			iconOpenEye.classList.add("is-visible");
-		} else {
-			inputPassword.type = "password";
-			iconCloseEye.classList.add("is-visible");
-			iconOpenEye.classList.remove("is-visible");
-		}
+	iconPasswordParents.forEach((item, i) => {
+		item.addEventListener("click", () => {
+			if (inputsPassword[i].type === "password") {
+				inputsPassword[i].type = "text";
+				iconsCloseEye[i].classList.remove("is-visible");
+				iconsOpenEye[i].classList.add("is-visible");
+			} else {
+				inputsPassword[i].type = "password";
+				iconsCloseEye[i].classList.add("is-visible");
+				iconsOpenEye[i].classList.remove("is-visible");
+			}
+		});
 	});
 }
 
@@ -55,7 +66,6 @@ function animateCardFlip() {
 	const front = document.querySelector(".form--login"),
 		back = document.querySelector(".form--registration"),
 		formLinks = document.querySelectorAll(".form__no-account a");
-		
 
 	formLinks.forEach(link => {
 		link.addEventListener("click", () => {

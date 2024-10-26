@@ -1,9 +1,9 @@
 <div class="auth__form-wrapper">
 	<form class="auth__form form form--login">
 		<h2 class="form__title">Вход</h2>
-		<p class="form__input-name" data-login>
-			<label for="name" class="visually-hidden">Введите имя</label>
-			<input type="text" name="name" id="name" placeholder="Имя" />
+		<p class="form__input-name" data-input="parent">
+			<label for="name-login" class="visually-hidden">Введите имя</label>
+			<input type="text" name="name" id="name-login" placeholder="Имя" />
 			<span>
 				<?xml version="1.0" encoding="utf-8"?>
 				<svg
@@ -24,13 +24,14 @@
 				</svg>
 			</span>
 		</p>
-		<p class="form__input-password" data-login>
-			<label for="password" class="visually-hidden">Введите пароль</label>
+		<p class="form__input-password" data-input="parent">
+			<label for="password-login" class="visually-hidden">Введите пароль</label>
 			<input
 				type="password"
 				name="password"
-				id="password"
+				id="password-login"
 				placeholder="Пароль"
+				data-input="password"
 			/>
 			<span>
 				<?xml version="1.0" encoding="utf-8"?>
@@ -76,13 +77,13 @@
 		<fieldset>
 			<legend class="visually-hidden">Кто Вы?</legend>
 			<p>
-				<label for="client" class="form__input-radio"
+				<label for="client-login" class="form__input-radio"
 					>Клиент
 					<input
 						tabindex="-1"
 						type="radio"
 						name="who"
-						id="client"
+						id="client-login"
 						value="client"
 						checked
 					/>
@@ -90,13 +91,13 @@
 				</label>
 			</p>
 			<p>
-				<label for="admin" class="form__input-radio"
+				<label for="admin-login" class="form__input-radio"
 					>Администратор
 					<input
 						tabindex="-1"
 						type="radio"
 						name="who"
-						id="admin"
+						id="admin-login"
 						value="admin"
 					/>
 					<span tabindex="0" class="form__input-radio-checkmark"></span>
@@ -105,13 +106,13 @@
 		</fieldset>
 
 		<p class="form__checkbox-remember">
-			<label for="remember" class="form__input-checkbox"
+			<label for="remember-login" class="form__input-checkbox"
 				>Запомнить меня
 				<input
 					tabindex="-1"
 					type="checkbox"
 					name="remember-me"
-					id="remember"
+					id="remember-login"
 					checked
 				/>
 				<span tabindex="0" class="form__input-checkbox-checkmark"></span>
@@ -127,9 +128,9 @@
 
 	<form class="auth__form form form--registration">
 		<h2 class="form__title">Регистрация</h2>
-		<p class="form__input-name" data-login>
-			<label for="name" class="visually-hidden">Введите имя</label>
-			<input type="text" name="name" id="name" placeholder="Имя" />
+		<p class="form__input-name" data-input="parent">
+			<label for="name-registration" class="visually-hidden">Введите имя</label>
+			<input type="text" name="name" id="name-registration" placeholder="Имя" />
 			<span>
 				<?xml version="1.0" encoding="utf-8"?>
 				<svg
@@ -150,13 +151,16 @@
 				</svg>
 			</span>
 		</p>
-		<p class="form__input-password" data-login>
-			<label for="password" class="visually-hidden">Введите пароль</label>
+		<p class="form__input-password" data-input="parent">
+			<label for="password-registration" class="visually-hidden"
+				>Введите пароль</label
+			>
 			<input
 				type="password"
 				name="password"
-				id="password"
+				id="password-registration"
 				placeholder="Пароль"
+				data-input="password"
 			/>
 			<span>
 				<?xml version="1.0" encoding="utf-8"?>
@@ -202,13 +206,13 @@
 		<fieldset>
 			<legend class="visually-hidden">Кто Вы?</legend>
 			<p>
-				<label for="client" class="form__input-radio"
+				<label for="client-registration" class="form__input-radio"
 					>Клиент
 					<input
 						tabindex="-1"
 						type="radio"
 						name="who"
-						id="client"
+						id="client-registration"
 						value="client"
 						checked
 					/>
@@ -216,13 +220,13 @@
 				</label>
 			</p>
 			<p>
-				<label for="admin" class="form__input-radio"
+				<label for="admin-registration" class="form__input-radio"
 					>Администратор
 					<input
 						tabindex="-1"
 						type="radio"
 						name="who"
-						id="admin"
+						id="admin-registration"
 						value="admin"
 					/>
 					<span tabindex="0" class="form__input-radio-checkmark"></span>
@@ -231,13 +235,13 @@
 		</fieldset>
 
 		<p class="form__checkbox-remember">
-			<label for="remember" class="form__input-checkbox"
+			<label for="remember-registration" class="form__input-checkbox"
 				>Запомнить меня
 				<input
 					tabindex="-1"
 					type="checkbox"
 					name="remember-me"
-					id="remember"
+					id="remember-registration"
 					checked
 				/>
 				<span tabindex="0" class="form__input-checkbox-checkmark"></span>
