@@ -1,0 +1,9 @@
+footer {
+	svg {
+		width: 20px;
+		height: 20px;
+	}
+	svg *[fill] {
+		fill: var(--color-red-notif);
+	}
+}

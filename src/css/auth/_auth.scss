@@ -1,6 +1,16 @@
-.auth {
-	height: 100vh;
+body {
+	min-height: 100vh;
 	display: flex;
+	flex-direction: column;
+}
+
+main {
+	margin-block: auto;
+}
+
+.auth {
+	display: flex;
+	height: min-content;
 	align-items: center;
 	justify-content: space-between;
 	gap: 50px;

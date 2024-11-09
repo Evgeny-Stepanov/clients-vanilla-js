@@ -34,12 +34,12 @@ function toggleTypePasswordAndChangeIcon() {
 		item.addEventListener("click", () => {
 			if (inputsPassword[i].type === "password") {
 				inputsPassword[i].type = "text";
-				iconsCloseEye[i].classList.remove("is-visible");
-				iconsOpenEye[i].classList.add("is-visible");
+				iconsCloseEye[i].classList.toggle("is-visible");
+				iconsOpenEye[i].classList.toggle("is-visible");
 			} else {
 				inputsPassword[i].type = "password";
-				iconsCloseEye[i].classList.add("is-visible");
-				iconsOpenEye[i].classList.remove("is-visible");
+				iconsCloseEye[i].classList.toggle("is-visible");
+				iconsOpenEye[i].classList.toggle("is-visible");
 			}
 		});
 	});
@@ -74,6 +74,8 @@ function animateCardFlip() {
 		});
 	});
 }
+
+//* Open modal window
 
 changeInputIconColor();
 toggleTypePasswordAndChangeIcon();
