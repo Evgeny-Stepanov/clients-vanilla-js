@@ -1,10 +1,29 @@
-<footer class="container">
-	<button>Settings</button>
-	<p>
-		Создано <button>мной</button> c
+<footer class="footer container">
+	<div class="footer__settings-wrapper">
+		<button class="footer__settings-btn">Настройки</button>
+		<div class="footer__settings settings">
+			<div class="settings__input-range">
+				<label for="fz">Размер шрифта</label>
+				<input
+					type="range"
+					id="fz"
+					name="fz"
+					min="14"
+					max="18"
+					step="2"
+					value="16"
+				/>
+				<span class="settings__input-range-value">16 px</span>
+			</div>
+			<div class="setting__switch-theme"></div>
+		</div>
+	</div>
+
+	<p class="footer__contacts">
+		Создано <button class="footer__links-btn">мной</button> c
 		<svg
-			width="800px"
-			height="800px"
+			width="30px"
+			height="30px"
 			viewBox="0 0 24 24"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
