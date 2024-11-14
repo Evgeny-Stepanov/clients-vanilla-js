@@ -1,10 +1,21 @@
-function changeInputRangeValue() {
-	const input = document.querySelector("#fz"),
+function changeInputRangeValueAndColor() {
+	const input = document.querySelector("#font-size"),
 		span = document.querySelector(".settings__font-size-value");
 
 	input.addEventListener("input", () => {
 		span.textContent = input.value;
+		changeInputRangeColor(input);
 	});
+}
+
+function changeInputRangeColor(input) {
+	const value = ((input.value - input.min) / (input.max - input.min)) * 100;
+	input.style.background =
+		"linear-gradient(to right, #902bf5 " +
+		value +
+		"%, transparent " +
+		value +
+		"%)";
 }
 
 function showSettingsBlock() {
@@ -26,5 +37,6 @@ function showSettingsBlock() {
 	});
 }
 
-changeInputRangeValue();
+changeInputRangeValueAndColor();
+changeInputRangeColor(document.querySelector("#font-size"));
 showSettingsBlock();

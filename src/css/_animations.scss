@@ -15,3 +15,13 @@
 		opacity: 0;
 	}
 }
+
+.fade-in {
+	animation-name: fadeIn;
+	animation-duration: var(--transition-duration);
+}
+
+.fade-out {
+	animation-name: fadeOut;
+	animation-duration: var(--transition-duration);
+}

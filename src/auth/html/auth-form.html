@@ -2,10 +2,11 @@
 	<form class="auth__form form form--login">
 		<h2 class="form__title">Вход</h2>
 		<p class="form__input-name" data-input="parent">
-			<label for="name-login" class="visually-hidden">Введите имя</label>
-			<input type="text" name="name" id="name-login" placeholder="Имя" />
+			<label for="name-login" class="visually-hidden"
+				>Введите имя для входа</label
+			>
+			<input type="text" name="name-login" id="name-login" placeholder="Имя" />
 			<span>
-				<?xml version="1.0" encoding="utf-8"?>
 				<svg
 					width="30px"
 					height="30px"
@@ -25,16 +26,17 @@
 			</span>
 		</p>
 		<p class="form__input-password" data-input="parent">
-			<label for="password-login" class="visually-hidden">Введите пароль</label>
+			<label for="password-login" class="visually-hidden"
+				>Введите пароль для входа</label
+			>
 			<input
 				type="password"
-				name="password"
+				name="password-login"
 				id="password-login"
 				placeholder="Пароль"
 				data-input="password"
 			/>
 			<span>
-				<?xml version="1.0" encoding="utf-8"?>
 				<svg
 					width="30px"
 					height="30px"
@@ -82,7 +84,7 @@
 					<input
 						tabindex="-1"
 						type="radio"
-						name="who"
+						name="who-login"
 						id="client-login"
 						value="client"
 						checked
@@ -96,7 +98,7 @@
 					<input
 						tabindex="-1"
 						type="radio"
-						name="who"
+						name="who-login"
 						id="admin-login"
 						value="admin"
 					/>
@@ -111,7 +113,7 @@
 				<input
 					tabindex="-1"
 					type="checkbox"
-					name="remember-me"
+					name="remember-login"
 					id="remember-login"
 					checked
 				/>
@@ -129,10 +131,16 @@
 	<form class="auth__form form form--registration">
 		<h2 class="form__title">Регистрация</h2>
 		<p class="form__input-name" data-input="parent">
-			<label for="name-registration" class="visually-hidden">Введите имя</label>
-			<input type="text" name="name" id="name-registration" placeholder="Имя" />
+			<label for="name-registration" class="visually-hidden"
+				>Введите имя для регистрации</label
+			>
+			<input
+				type="text"
+				name="name-registration"
+				id="name-registration"
+				placeholder="Имя"
+			/>
 			<span>
-				<?xml version="1.0" encoding="utf-8"?>
 				<svg
 					width="30px"
 					height="30px"
@@ -153,17 +161,16 @@
 		</p>
 		<p class="form__input-password" data-input="parent">
 			<label for="password-registration" class="visually-hidden"
-				>Введите пароль</label
+				>Введите пароль для регистрации</label
 			>
 			<input
 				type="password"
-				name="password"
+				name="password-registration"
 				id="password-registration"
 				placeholder="Пароль"
 				data-input="password"
 			/>
 			<span>
-				<?xml version="1.0" encoding="utf-8"?>
 				<svg
 					width="30px"
 					height="30px"
@@ -211,7 +218,7 @@
 					<input
 						tabindex="-1"
 						type="radio"
-						name="who"
+						name="who-registration"
 						id="client-registration"
 						value="client"
 						checked
@@ -225,7 +232,7 @@
 					<input
 						tabindex="-1"
 						type="radio"
-						name="who"
+						name="who-registration"
 						id="admin-registration"
 						value="admin"
 					/>
@@ -240,7 +247,7 @@
 				<input
 					tabindex="-1"
 					type="checkbox"
-					name="remember-me"
+					name="remember-registration"
 					id="remember-registration"
 					checked
 				/>
