@@ -5,57 +5,68 @@ window.addEventListener("load", () => {
 
 //* Animation on the input icon color when focused
 function changeInputIconColor() {
-	const inputParents = document.querySelectorAll("p[data-input='parent']"),
+	const inputsParents = document.querySelectorAll("p[data-input='parent']"),
 		inputs = document.querySelectorAll("p[data-input='parent'] input");
 
 	inputs.forEach((input, index) => {
 		input.addEventListener("focus", () => {
-			inputParents[index].querySelector("span").classList.add("is-focus");
+			inputsParents[index].querySelector("span").classList.add("is-focus");
 		});
 
 		input.addEventListener("blur", () => {
-			inputParents[index].querySelector("span").classList.remove("is-focus");
+			inputsParents[index].querySelector("span").classList.remove("is-focus");
 		});
 	});
 }
 
 //* Toggle password visibility and change the icon
-function toggleTypePasswordAndChangeIcon() {
-	const inputsPassword = document.querySelectorAll(
+function toggleInputTypeAndChangeIcon() {
+	const passwordInputs = document.querySelectorAll(
 			"input[data-input='password']",
 		),
-		iconPasswordParents = document.querySelectorAll(
+		passwordIconParents = document.querySelectorAll(
 			"input[data-input='password'] ~ span",
 		),
-		iconsCloseEye = document.querySelectorAll("svg[data-eye='close']"),
-		iconsOpenEye = document.querySelectorAll("svg[data-eye='open']");
+		closeEyeIcons = document.querySelectorAll("svg[data-eye='close']"),
+		openEyeIcons = document.querySelectorAll("svg[data-eye='open']");
 
-	iconPasswordParents.forEach((item, i) => {
-		item.addEventListener("click", () => {
-			if (inputsPassword[i].type === "password") {
-				inputsPassword[i].type = "text";
-				iconsCloseEye[i].classList.toggle("is-visible");
-				iconsOpenEye[i].classList.toggle("is-visible");
+	passwordIconParents.forEach((parent, index) => {
+		parent.addEventListener("click", () => {
+			if (passwordInputs[index].type === "password") {
+				passwordInputs[index].type = "text";
+				changeInputPasswordIcon(
+					closeEyeIcons[index],
+					openEyeIcons[index],
+					"is-visible",
+				);
 			} else {
-				inputsPassword[i].type = "password";
-				iconsCloseEye[i].classList.toggle("is-visible");
-				iconsOpenEye[i].classList.toggle("is-visible");
+				passwordInputs[index].type = "password";
+				changeInputPasswordIcon(
+					closeEyeIcons[index],
+					openEyeIcons[index],
+					"is-visible",
+				);
 			}
 		});
 	});
 }
 
+function changeInputPasswordIcon(closeEyeIcon, openEyeIcon, visibilityClass) {
+	closeEyeIcon.classList.toggle(visibilityClass);
+	openEyeIcon.classList.toggle(visibilityClass);
+}
+
 //* Animation of text "Clients" when hovering over a button
 function changeClientsTextColor() {
-	const formSubmitButtons = document.querySelectorAll(".form button"),
+	const formButtons = document.querySelectorAll(".form button"),
 		clientsText = document.querySelector(".auth__title span");
 
-	formSubmitButtons.forEach(btn => {
-		btn.addEventListener("mouseover", () => {
+	formButtons.forEach(button => {
+		button.addEventListener("mouseover", () => {
 			clientsText.classList.add("is-hover");
 		});
 
-		btn.addEventListener("mouseout", () => {
+		button.addEventListener("mouseout", () => {
 			clientsText.classList.remove("is-hover");
 		});
 	});
@@ -63,14 +74,14 @@ function changeClientsTextColor() {
 
 //* Form card flipping animation
 function animateCardFlip() {
-	const front = document.querySelector(".form--login"),
-		back = document.querySelector(".form--registration"),
+	const frontCard = document.querySelector(".form--login"),
+		backCard = document.querySelector(".form--registration"),
 		formLinks = document.querySelectorAll(".form__no-account a");
 
 	formLinks.forEach(link => {
 		link.addEventListener("click", () => {
-			front.classList.toggle("flipped");
-			back.classList.toggle("flipped");
+			frontCard.classList.toggle("flipped");
+			backCard.classList.toggle("flipped");
 		});
 	});
 }
@@ -78,6 +89,6 @@ function animateCardFlip() {
 //* Open modal window
 
 changeInputIconColor();
-toggleTypePasswordAndChangeIcon();
+toggleInputTypeAndChangeIcon();
 changeClientsTextColor();
 animateCardFlip();
