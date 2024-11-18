@@ -3,7 +3,6 @@ window.addEventListener("load", () => {
 	document.body.classList.remove("preload");
 });
 
-//* Animation on the input icon color when focused
 function changeInputIconColor() {
 	const inputsParents = document.querySelectorAll("p[data-input='parent']"),
 		inputs = document.querySelectorAll("p[data-input='parent'] input");
@@ -19,7 +18,6 @@ function changeInputIconColor() {
 	});
 }
 
-//* Toggle password visibility and change the icon
 function toggleInputTypeAndChangeIcon() {
 	const passwordInputs = document.querySelectorAll(
 			"input[data-input='password']",
@@ -56,7 +54,6 @@ function changeInputPasswordIcon(closeEyeIcon, openEyeIcon, visibilityClass) {
 	openEyeIcon.classList.toggle(visibilityClass);
 }
 
-//* Animation of text "Clients" when hovering over a button
 function changeClientsTextColor() {
 	const formButtons = document.querySelectorAll(".form button"),
 		clientsText = document.querySelector(".auth__title span");
@@ -72,7 +69,6 @@ function changeClientsTextColor() {
 	});
 }
 
-//* Form card flipping animation
 function animateCardFlip() {
 	const frontCard = document.querySelector(".form--login"),
 		backCard = document.querySelector(".form--registration"),
@@ -85,8 +81,6 @@ function animateCardFlip() {
 		});
 	});
 }
-
-//* Open modal window
 
 changeInputIconColor();
 toggleInputTypeAndChangeIcon();

@@ -24,6 +24,10 @@
 	}
 }
 
+.overflow-hidden {
+	overflow: hidden;
+}
+
 @function calc-font-size($n) {
 	@return calc(var(--font-size) * $n);
 }
