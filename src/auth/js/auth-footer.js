@@ -39,34 +39,6 @@ function showSettingsBlock() {
 	});
 }
 
-function openModalContacts() {
-	const openButton = document.querySelector(".footer__contacts-btn"),
-		modalDialog = document.querySelector(".modal-contacts");
-
-	openButton.addEventListener("click", () => {
-		modalDialog.showModal();
-		document.body.classList.add("overflow-hidden");
-	});
-}
-
-function closeModalContacts() {
-	const modalDialog = document.querySelector(".modal-contacts"),
-		closeButton = document.querySelector(".modal-contacts__close-btn");
-
-	modalDialog.addEventListener("click", evt => {
-		const isClickOnBackdrop = evt.target === evt.currentTarget,
-			isClickOnCloseButton = evt.target === closeButton;
-
-		if (isClickOnBackdrop || isClickOnCloseButton) {
-			modalDialog.close();
-		}
-	});
-}
-
 changeInputRangeValueAndColorFill();
 changeInputRangeColorFill(document.querySelector("#font-size"));
 showSettingsBlock();
-openModalContacts();
-closeModalContacts();
-
-//close()
