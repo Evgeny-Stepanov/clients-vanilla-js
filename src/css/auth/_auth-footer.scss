@@ -50,7 +50,7 @@
 			}
 		}
 		svg {
-			* [fill] {
+			path {
 				fill: var(--color-accent);
 			}
 		}
@@ -58,20 +58,10 @@
 }
 
 .settings {
-	display: none;
-	padding: calc-font-size(1.25);
-	position: absolute;
 	left: calc-font-size(8.125);
-	top: 50%;
-	transform: translateY(-50%);
 	gap: 20px;
 	&__font-size {
-		display: grid;
-		grid-template-rows: 1fr 1fr;
 		grid-template-columns: 100px calc-font-size(1.875);
-		row-gap: calc-font-size(0.313);
-		column-gap: calc-font-size(0.625);
-		align-items: center;
 		label {
 			grid-column: 1 / 3;
 		}
@@ -149,14 +139,9 @@
 			}
 		}
 		&-wrapper {
-			display: grid;
-			grid-template-rows: 1fr 1fr;
-			grid-template-columns: 55px calc(var(--font-size) * 1.56);
-			row-gap: calc(var(--font-size) * 0.313);
-			column-gap: calc(var(--font-size) * 0.625);
-			align-items: center;
+			grid-template-columns: 55px calc-font-size(1.56);
 			svg {
-				* [fill] {
+				path {
 					fill: var(--color-white);
 				}
 			}
@@ -169,35 +154,78 @@
 }
 
 .contacts {
-	position: absolute;
-	padding: calc(var(--font-size) * 1.25);
-	top: 50%;
-	transform: translateY(-50%);
-	left: calc(var(--font-size) * -17.82);
+	left: calc-font-size(-18.125);
 	&__list {
 		display: flex;
 		gap: 25px;
 	}
 
 	&__item {
+		@include flex-center;
 		width: 40px;
 		height: 40px;
-	}
-
-	&__link {
-		display: inline-block;
-		padding: 5px;
-		svg {
-			width: 30px !important;
-			height: 30px !important;
-			* [fill] {
-				fill: var(--color-white) !important;
-			}
-			* [stroke] {
-				stroke: var(--color-white) !important;
+		border: install-border(2px, var(--color-white));
+		border-radius: 50%;
+		transition: install-transition(border);
+		@include hover {
+			border: install-border(2px, var(--color-accent));
+			svg path {
+				transition: install-transition(fill);
+				fill: var(--color-accent);
 			}
 		}
 	}
+
+	&__link {
+		position: relative;
+		display: inline-block;
+		width: 100%;
+		height: 100%;
+		svg {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 25px !important;
+			height: 25px !important;
+			path {
+				transition: install-transition(fill);
+				fill: var(--color-white);
+				stroke: var(--color-black);
+			}
+		}
+	}
+}
+
+.contacts,
+.settings {
+	display: none;
+	padding: calc-font-size(1.25);
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.settings {
+	&__font-size,
+	&__switch-wrapper {
+		display: grid;
+		grid-template-rows: 1fr 1fr;
+		row-gap: calc-font-size(0.313);
+		column-gap: calc-font-size(0.625);
+		align-items: center;
+	}
+}
+
+.footer__contacts svg,
+.settings__switch-wrapper svg {
+	vertical-align: middle;
+	width: calc-font-size(1.25);
+	height: calc-font-size(1.25);
+}
+
+.is-open {
+	display: flex;
 }
 
 //? If I apply it to webkit at the same time, it doesn't work in Chrome.
@@ -218,15 +246,4 @@
 			background: transparent;
 		}
 	}
-}
-
-.footer__contacts svg,
-.settings__switch-wrapper svg {
-	vertical-align: middle;
-	width: calc-font-size(1.25);
-	height: calc-font-size(1.25);
-}
-
-.is-open {
-	display: inline-flex;
 }

@@ -39,6 +39,26 @@ function showSettingsBlock() {
 	});
 }
 
+function showContactsBlock() {
+	const showButton = document.querySelector(".footer__contacts-btn"),
+		contactsBlock = document.querySelector(".footer__contacts.contacts");
+
+	showButton.addEventListener("click", () => {
+		if (!contactsBlock.classList.contains("is-open")) {
+			contactsBlock.classList.add("is-open");
+			contactsBlock.classList.add("fade-in");
+			contactsBlock.classList.remove("fade-out");
+		} else {
+			contactsBlock.classList.remove("fade-in");
+			contactsBlock.classList.add("fade-out");
+			setTimeout(() => {
+				contactsBlock.classList.remove("is-open");
+			}, 300);
+		}
+	});
+}
+
 changeInputRangeValueAndColorFill();
 changeInputRangeColorFill(document.querySelector("#font-size"));
 showSettingsBlock();
+showContactsBlock();

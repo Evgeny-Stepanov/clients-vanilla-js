@@ -152,8 +152,8 @@
 			display: block;
 		}
 		& .form__input-radio-checkmark::after {
-			width: calc(var(--font-size) * 0.625);
-			height: calc(var(--font-size) * 0.625);
+			width: calc-font-size(0.625);
+			height: calc-font-size(0.625);
 			background: var(--color-accent);
 			border-radius: 50%;
 		}
@@ -169,8 +169,8 @@
 			padding-bottom: calc-font-size(0.1875);
 			border-radius: 0;
 			&::after {
-				width: calc(var(--font-size) * 0.4375);
-				height: calc(var(--font-size) * 0.75);
+				width: calc-font-size(0.4375);
+				height: calc-font-size(0.75);
 				border: solid var(--color-accent);
 				//! Leave the border-width fixed, otherwise it looks worse when changing --font-size
 				border-width: 0 3px 3px 0;

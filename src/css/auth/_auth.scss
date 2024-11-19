@@ -45,26 +45,6 @@ main {
 	}
 }
 
-.modal-contacts {
-	padding: 0;
-	border: none;
-	&::backdrop {
-		background-color: var(--color-black);
-		opacity: 0.8;
-	}
-	&-wrapper {
-		padding: 50px;
-	}
-	&__title {
-	}
-
-	&__list {
-	}
-
-	&__list-item {
-	}
-}
-
 .is-hover {
 	&::before {
 		height: 100% !important;
