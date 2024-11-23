@@ -59,6 +59,7 @@
 
 .settings {
 	left: calc-font-size(8.125);
+	padding: calc-font-size(1.125);
 	gap: 20px;
 	&__font-size {
 		grid-template-columns: 100px calc-font-size(1.875);
@@ -154,7 +155,8 @@
 }
 
 .contacts {
-	left: calc-font-size(-18.125);
+	right: calc-font-size(10);
+	padding: calc-font-size(1.563);
 	&__list {
 		display: flex;
 		gap: 25px;
@@ -200,7 +202,6 @@
 .contacts,
 .settings {
 	display: none;
-	padding: calc-font-size(1.25);
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);

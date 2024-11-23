@@ -1,11 +1,27 @@
-function changeInputRangeValueAndColorFill() {
+function changeFontSize() {
 	const rangeInput = document.querySelector("#font-size"),
 		inputValueSpan = document.querySelector(".settings__font-size-value");
 
 	rangeInput.addEventListener("input", () => {
 		inputValueSpan.textContent = rangeInput.value;
 		changeInputRangeColorFill(rangeInput);
+		setFontSizeVariable(rangeInput.value);
+		//setLocalStorageFontSize(rangeInput.value);
 	});
+}
+
+/* function setLocalStorageFontSize(value) {
+	if (!localStorage.getItem("font-size")) {
+		localStorage.setItem("font-size", 16);
+	} else {
+		localStorage.setItem("font-size", value);
+		setFontSizeVariable(localStorage.getItem("font-size"));
+	}
+} */
+
+function setFontSizeVariable(value) {
+	const root = document.querySelector(":root");
+	root.style.setProperty("--font-size", `${value}px`);
 }
 
 function changeInputRangeColorFill(rangeInput) {
@@ -24,6 +40,8 @@ function showFooterBlock(button, block) {
 	button.addEventListener("click", () => {
 		if (!block.classList.contains("is-open")) {
 			block.classList.add("is-open");
+		} else {
+			block.classList.remove("is-open");
 		}
 	});
 }
@@ -36,9 +54,8 @@ function hideFooterBlock(button, block) {
 	});
 }
 
-changeInputRangeValueAndColorFill();
+changeFontSize();
 changeInputRangeColorFill(document.querySelector("#font-size"));
-
 showFooterBlock(
 	document.querySelector(".footer__settings-btn"),
 	document.querySelector(".footer__settings"),
