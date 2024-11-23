@@ -20,45 +20,39 @@ function changeInputRangeColorFill(rangeInput) {
 		"%)";
 }
 
-function showSettingsBlock() {
-	const showButton = document.querySelector(".footer__settings-btn"),
-		settingsBlock = document.querySelector(".footer__settings");
-
-	showButton.addEventListener("click", () => {
-		if (!settingsBlock.classList.contains("is-open")) {
-			settingsBlock.classList.add("is-open");
-			settingsBlock.classList.add("fade-in");
-			settingsBlock.classList.remove("fade-out");
-		} else {
-			settingsBlock.classList.remove("fade-in");
-			settingsBlock.classList.add("fade-out");
-			setTimeout(() => {
-				settingsBlock.classList.remove("is-open");
-			}, 300);
+function showFooterBlock(button, block) {
+	button.addEventListener("click", () => {
+		if (!block.classList.contains("is-open")) {
+			block.classList.add("is-open");
 		}
 	});
 }
 
-function showContactsBlock() {
-	const showButton = document.querySelector(".footer__contacts-btn"),
-		contactsBlock = document.querySelector(".footer__contacts.contacts");
-
-	showButton.addEventListener("click", () => {
-		if (!contactsBlock.classList.contains("is-open")) {
-			contactsBlock.classList.add("is-open");
-			contactsBlock.classList.add("fade-in");
-			contactsBlock.classList.remove("fade-out");
-		} else {
-			contactsBlock.classList.remove("fade-in");
-			contactsBlock.classList.add("fade-out");
-			setTimeout(() => {
-				contactsBlock.classList.remove("is-open");
-			}, 300);
+function hideFooterBlock(button, block) {
+	document.body.addEventListener("click", evt => {
+		if (!block.contains(evt.target) && !button.contains(evt.target)) {
+			block.classList.remove("is-open");
 		}
 	});
 }
 
 changeInputRangeValueAndColorFill();
 changeInputRangeColorFill(document.querySelector("#font-size"));
-showSettingsBlock();
-showContactsBlock();
+
+showFooterBlock(
+	document.querySelector(".footer__settings-btn"),
+	document.querySelector(".footer__settings"),
+);
+
+showFooterBlock(
+	document.querySelector(".footer__contacts-btn"),
+	document.querySelector(".footer__contacts.contacts"),
+);
+hideFooterBlock(
+	document.querySelector(".footer__settings-btn"),
+	document.querySelector(".footer__settings"),
+);
+hideFooterBlock(
+	document.querySelector(".footer__contacts-btn"),
+	document.querySelector(".footer__contacts.contacts"),
+);
