@@ -2,22 +2,31 @@ function changeFontSize() {
 	const rangeInput = document.querySelector("#font-size"),
 		inputValueSpan = document.querySelector(".settings__font-size-value");
 
+	if (localStorage.getItem("font-size")) {
+		rangeInput.value = localStorage.getItem("font-size");
+		changeInputRange(
+			rangeInput,
+			inputValueSpan,
+			localStorage.getItem("font-size"),
+		);
+	}
+
 	rangeInput.addEventListener("input", () => {
-		inputValueSpan.textContent = rangeInput.value;
-		changeInputRangeColorFill(rangeInput);
-		setFontSizeVariable(rangeInput.value);
-		//setLocalStorageFontSize(rangeInput.value);
+		changeInputRange(rangeInput, inputValueSpan, rangeInput.value);
+
+		if (rangeInput.value == 16) {
+			localStorage.removeItem("font-size");
+		} else {
+			localStorage.setItem("font-size", rangeInput.value);
+		}
 	});
 }
 
-/* function setLocalStorageFontSize(value) {
-	if (!localStorage.getItem("font-size")) {
-		localStorage.setItem("font-size", 16);
-	} else {
-		localStorage.setItem("font-size", value);
-		setFontSizeVariable(localStorage.getItem("font-size"));
-	}
-} */
+function changeInputRange(input, valueSpan, valueFontSize) {
+	valueSpan.textContent = input.value;
+	changeInputRangeColorFill(input);
+	setFontSizeVariable(valueFontSize);
+}
 
 function setFontSizeVariable(value) {
 	const root = document.querySelector(":root");
@@ -34,6 +43,25 @@ function changeInputRangeColorFill(rangeInput) {
 		"%, transparent " +
 		value +
 		"%)";
+}
+
+function changeThemeColor() {
+	const checkboxInput = document.querySelector("#theme-color");
+
+	if (localStorage.getItem("theme-color")) {
+		document.body.classList.add("white-theme");
+		checkboxInput.checked = true;
+	}
+
+	checkboxInput.addEventListener("change", () => {
+		if (checkboxInput.checked) {
+			localStorage.setItem("theme-color", "white");
+			document.body.classList.add("white-theme");
+		} else {
+			localStorage.removeItem("theme-color");
+			document.body.classList.remove("white-theme");
+		}
+	});
 }
 
 function showFooterBlock(button, block) {
@@ -56,6 +84,7 @@ function hideFooterBlock(button, block) {
 
 changeFontSize();
 changeInputRangeColorFill(document.querySelector("#font-size"));
+changeThemeColor();
 showFooterBlock(
 	document.querySelector(".footer__settings-btn"),
 	document.querySelector(".footer__settings"),
