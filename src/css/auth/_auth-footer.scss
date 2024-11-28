@@ -27,9 +27,11 @@
 			background-color: transparent;
 			color: var(--color-white);
 			border: install-border(2px, var(--color-gray-dark));
-			transition: install-transition(background-color);
+			transition: install-transition(all);
 			@include hover {
 				background-color: var(--color-accent);
+				box-shadow: install-shadow(var(--color-gray-dark));
+				border: install-border(2px, var(--color-accent));
 			}
 		}
 	}
@@ -142,8 +144,10 @@
 		&-wrapper {
 			grid-template-columns: 55px calc-font-size(1.56);
 			svg {
+				stroke: var(--color-black);
 				path {
 					fill: var(--color-white);
+					stroke: var(--color-white);
 				}
 			}
 		}
@@ -193,7 +197,6 @@
 			path {
 				transition: install-transition(fill);
 				fill: var(--color-white);
-				stroke: var(--color-black);
 			}
 		}
 	}

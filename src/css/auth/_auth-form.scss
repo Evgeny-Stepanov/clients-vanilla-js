@@ -128,8 +128,9 @@
 			align-items: center;
 			width: calc-font-size(1.25);
 			height: calc-font-size(1.25);
-			background-color: var(--color-white);
+			border: install-border(2px, var(--color-accent));
 			border-radius: 50%;
+			transition: install-transition(all);
 			&::after {
 				content: "";
 				position: absolute;
@@ -139,7 +140,7 @@
 		@include hover {
 			input ~ .form__input-radio-checkmark,
 			input ~ .form__input-checkbox-checkmark {
-				background-color: var(--color-gray-light);
+				background-color: var(--color-accent);
 			}
 		}
 		& input:checked ~ .form__input-radio-checkmark,
@@ -192,7 +193,7 @@
 		border-radius: var(--border-radius-small);
 		background-color: transparent;
 		color: var(--color-white);
-		transition: install-transition(box-shadow);
+		transition: install-transition(all);
 		&::before {
 			content: "";
 			display: block;
@@ -209,6 +210,7 @@
 		}
 		@include hover {
 			box-shadow: install-shadow(var(--color-gray-dark));
+			border: install-border(2px, var(--color-accent));
 			&::before {
 				transform: scaleY(1);
 			}

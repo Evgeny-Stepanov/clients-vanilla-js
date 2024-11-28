@@ -1,5 +1,101 @@
 body:has(input#theme-color:checked) {
-	h1 {
-		color: blue;
+	color: var(--color-black);
+	background-color: var(--color-white);
+	.auth {
+		&__title span::before {
+			background-color: var(--color-white);
+		}
+	}
+
+	.form {
+		&__input-name,
+		&__input-password {
+			input {
+				color: var(--color-black);
+				transition: install-transition(border-color);
+				&::placeholder {
+					color: var(--color-black);
+				}
+				&:autofill,
+				&:autofill:hover,
+				&:autofill:focus,
+				&:autofill:active,
+				&:-webkit-autofill,
+				&:-webkit-autofill:hover,
+				&:-webkit-autofill:focus,
+				&:-webkit-autofill:active {
+					-webkit-background-clip: text;
+					-webkit-text-fill-color: var(--color-black);
+				}
+			}
+		}
+
+		svg path {
+			fill: var(--color-black);
+		}
+
+		button {
+			color: var(--color-black);
+			@include hover {
+				color: var(--color-white);
+			}
+		}
+
+		&__no-account a {
+			color: var(--color-black);
+			@include hover {
+				color: var(--color-gray-dark);
+			}
+		}
+	}
+
+	.footer {
+		&__settings-btn {
+			color: var(--color-black);
+			@include hover {
+				color: var(--color-white);
+			}
+		}
+		&__contacts-btn {
+			color: var(--color-black);
+			@include hover {
+				color: var(--color-gray-dark);
+			}
+		}
+
+		.settings {
+			&__font-size input {
+				@include hover {
+					border: install-border(2px, var(--color-black));
+				}
+			}
+			&__switch-wrapper {
+				svg {
+					path {
+						fill: var(--color-black);
+						stroke: var(--color-black);
+					}
+				}
+			}
+		}
+
+		.contacts {
+			&__item {
+				border: install-border(2px, var(--color-black));
+				@include hover {
+					border: install-border(2px, var(--color-accent));
+					svg path {
+						transition: install-transition(fill);
+						fill: var(--color-accent);
+					}
+				}
+			}
+
+			&__link {
+				svg path {
+					fill: var(--color-black);
+				}
+			}
+		}
 	}
 }

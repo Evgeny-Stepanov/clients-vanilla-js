@@ -25,6 +25,7 @@ main {
 			font-size: calc-font-size(2.5);
 			&::before {
 				content: attr(data-text);
+				background-color: var(--color-black);
 				position: absolute;
 				z-index: 1;
 				color: var(--color-accent);
@@ -32,9 +33,6 @@ main {
 				height: 0;
 				overflow: hidden;
 				transition: install-transition(height);
-				-webkit-text-fill-color: var(--color-accent);
-				-webkit-text-stroke-width: 1px;
-				-webkit-text-stroke-color: var(--color-accent);
 			}
 		}
 	}
@@ -48,6 +46,7 @@ main {
 .is-hover {
 	&::before {
 		height: 100% !important;
+		color: var(--color-black);
 	}
 }
 
