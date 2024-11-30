@@ -66,10 +66,10 @@ function changeThemeColor() {
 
 function showFooterBlock(button, block) {
 	button.addEventListener("click", () => {
-		if (!block.classList.contains("is-open")) {
-			block.classList.add("is-open");
+		if (!block.classList.contains("footer--is-open")) {
+			block.classList.add("footer--is-open");
 		} else {
-			block.classList.remove("is-open");
+			block.classList.remove("footer--is-open");
 		}
 	});
 }
@@ -77,7 +77,7 @@ function showFooterBlock(button, block) {
 function hideFooterBlock(button, block) {
 	document.body.addEventListener("click", evt => {
 		if (!block.contains(evt.target) && !button.contains(evt.target)) {
-			block.classList.remove("is-open");
+			block.classList.remove("footer--is-open");
 		}
 	});
 }

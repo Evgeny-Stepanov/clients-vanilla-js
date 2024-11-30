@@ -1,6 +1,6 @@
 //* Trick to cancel transition on page load
 window.addEventListener("load", () => {
-	document.body.classList.remove("preload");
+	document.body.classList.remove("auth--preload");
 });
 
 function changeInputIconColor() {
@@ -9,11 +9,15 @@ function changeInputIconColor() {
 
 	inputs.forEach((input, index) => {
 		input.addEventListener("focus", () => {
-			inputsParents[index].querySelector("span").classList.add("is-focus");
+			inputsParents[index]
+				.querySelector("span")
+				.classList.add("form__input-span--is-focus");
 		});
 
 		input.addEventListener("blur", () => {
-			inputsParents[index].querySelector("span").classList.remove("is-focus");
+			inputsParents[index]
+				.querySelector("span")
+				.classList.remove("form__input-span--is-focus");
 		});
 	});
 }
@@ -35,14 +39,14 @@ function toggleInputTypeAndChangeIcon() {
 				changeInputPasswordIcon(
 					closeEyeIcons[index],
 					openEyeIcons[index],
-					"is-visible",
+					"form__input-svg--is-visible",
 				);
 			} else {
 				passwordInputs[index].type = "password";
 				changeInputPasswordIcon(
 					closeEyeIcons[index],
 					openEyeIcons[index],
-					"is-visible",
+					"form__input-svg--is-visible",
 				);
 			}
 		});
@@ -60,11 +64,11 @@ function changeClientsTextColor() {
 
 	formButtons.forEach(button => {
 		button.addEventListener("mouseover", () => {
-			clientsText.classList.add("is-hover");
+			clientsText.classList.add("auth__title-span--is-hover");
 		});
 
 		button.addEventListener("mouseout", () => {
-			clientsText.classList.remove("is-hover");
+			clientsText.classList.remove("auth__title-span--is-hover");
 		});
 	});
 }
@@ -76,8 +80,8 @@ function animateCardFlip() {
 
 	formLinks.forEach(link => {
 		link.addEventListener("click", () => {
-			frontCard.classList.toggle("flipped");
-			backCard.classList.toggle("flipped");
+			frontCard.classList.toggle("auth__form--is-flipped");
+			backCard.classList.toggle("auth__form--is-flipped");
 		});
 	});
 }

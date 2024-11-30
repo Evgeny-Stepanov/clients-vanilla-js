@@ -43,13 +43,13 @@ main {
 	}
 }
 
-.is-hover {
+.auth__title-span--is-hover {
 	&::before {
 		height: 100% !important;
 		color: var(--color-black);
 	}
 }
 
-.preload * {
+.auth--preload * {
 	transition: none !important;
 }

@@ -5,7 +5,13 @@
 			<label for="name-login" class="visually-hidden"
 				>Введите имя для входа</label
 			>
-			<input type="text" name="name-login" id="name-login" placeholder="Имя" />
+			<input
+				type="text"
+				name="name-login"
+				class="input"
+				id="name-login"
+				placeholder="Имя"
+			/>
 			<span>
 				<svg
 					width="30px"
@@ -33,6 +39,7 @@
 				type="password"
 				name="password-login"
 				id="password-login"
+				class="input"
 				placeholder="Пароль"
 				data-input="password"
 			/>
@@ -44,7 +51,7 @@
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
 					data-eye="close"
-					class="is-visible"
+					class="form__input-svg--is-visible"
 				>
 					<path
 						fill-rule="evenodd"
@@ -126,6 +133,8 @@
 		<p class="form__no-account">
 			Нет аккаунта? <a href="#">Зарегистрировать</a>
 		</p>
+
+		<span class="form--empty"></span>
 	</form>
 
 	<form class="auth__form form form--registration">
@@ -139,6 +148,9 @@
 				name="name-registration"
 				id="name-registration"
 				placeholder="Имя"
+				required
+				minlength="2"
+				maxlength="15"
 			/>
 			<span>
 				<svg
@@ -158,6 +170,8 @@
 					/>
 				</svg>
 			</span>
+
+			<span class="name-registration-error"></span>
 		</p>
 		<p class="form__input-password" data-input="parent">
 			<label for="password-registration" class="visually-hidden"
@@ -178,7 +192,7 @@
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
 					data-eye="close"
-					class="is-visible"
+					class="form__input-svg--is-visible"
 				>
 					<path
 						fill-rule="evenodd"
