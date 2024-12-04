@@ -1,6 +1,6 @@
 //* Trick to cancel transition on page load
 window.addEventListener("load", () => {
-	document.body.classList.remove("auth--preload");
+	document.body.classList.remove("auth__preload");
 });
 
 function changeInputIconColor() {

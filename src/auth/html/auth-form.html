@@ -1,5 +1,5 @@
 <div class="auth__form-wrapper">
-	<form class="auth__form form form--login">
+	<form class="auth__form form form--login" novalidate>
 		<h2 class="form__title">Вход</h2>
 		<p class="form__input-name" data-input="parent">
 			<label for="name-login" class="visually-hidden"
@@ -8,9 +8,13 @@
 			<input
 				type="text"
 				name="name-login"
-				class="input"
 				id="name-login"
 				placeholder="Имя"
+				required
+				minlength="2"
+				maxlength="15"
+				pattern="^[а-яА-ЯёЁ]+$"
+				title="Имя должно быть длиной от 2 до 15 символов и состоять только из кириллицы (русский алфавит)."
 			/>
 			<span>
 				<svg
@@ -30,6 +34,8 @@
 					/>
 				</svg>
 			</span>
+
+			<span class="form__input-error"></span>
 		</p>
 		<p class="form__input-password" data-input="parent">
 			<label for="password-login" class="visually-hidden"
@@ -39,9 +45,13 @@
 				type="password"
 				name="password-login"
 				id="password-login"
-				class="input"
 				placeholder="Пароль"
 				data-input="password"
+				required
+				minlength="4"
+				maxlength="15"
+				pattern="\d*"
+				title="Пароль должен быть длиной от 4 до 15 символов и состоять только из цифр."
 			/>
 			<span>
 				<svg
@@ -81,6 +91,8 @@
 					/>
 				</svg>
 			</span>
+
+			<span class="form__input-error"></span>
 		</p>
 
 		<fieldset>
@@ -94,7 +106,7 @@
 						name="who-login"
 						id="client-login"
 						value="client"
-						checked
+						required
 					/>
 					<span tabindex="0" class="form__input-radio-checkmark"></span>
 				</label>
@@ -108,10 +120,13 @@
 						name="who-login"
 						id="admin-login"
 						value="admin"
+						required
 					/>
 					<span tabindex="0" class="form__input-radio-checkmark"></span>
 				</label>
 			</p>
+
+			<span class="form__input-error"></span>
 		</fieldset>
 
 		<p class="form__checkbox-remember">
@@ -133,11 +148,9 @@
 		<p class="form__no-account">
 			Нет аккаунта? <a href="#">Зарегистрировать</a>
 		</p>
-
-		<span class="form--empty"></span>
 	</form>
 
-	<form class="auth__form form form--registration">
+	<form class="auth__form form form--registration" novalidate>
 		<h2 class="form__title">Регистрация</h2>
 		<p class="form__input-name" data-input="parent">
 			<label for="name-registration" class="visually-hidden"
@@ -151,6 +164,8 @@
 				required
 				minlength="2"
 				maxlength="15"
+				pattern="^[а-яА-ЯёЁ]+$"
+				title="Имя должно быть длиной от 2 до 15 символов и состоять только из кириллицы (русский алфавит)."
 			/>
 			<span>
 				<svg
@@ -171,7 +186,7 @@
 				</svg>
 			</span>
 
-			<span class="name-registration-error"></span>
+			<span class="form__input-error"></span>
 		</p>
 		<p class="form__input-password" data-input="parent">
 			<label for="password-registration" class="visually-hidden"
@@ -183,6 +198,11 @@
 				id="password-registration"
 				placeholder="Пароль"
 				data-input="password"
+				required
+				minlength="4"
+				maxlength="15"
+				pattern="\d*"
+				title="Пароль должен быть длиной от 4 до 15 символов и состоять только из цифр."
 			/>
 			<span>
 				<svg
@@ -222,6 +242,8 @@
 					/>
 				</svg>
 			</span>
+
+			<span class="form__input-error"></span>
 		</p>
 
 		<fieldset>
@@ -235,7 +257,7 @@
 						name="who-registration"
 						id="client-registration"
 						value="client"
-						checked
+						required
 					/>
 					<span tabindex="0" class="form__input-radio-checkmark"></span>
 				</label>
@@ -249,10 +271,13 @@
 						name="who-registration"
 						id="admin-registration"
 						value="admin"
+						required
 					/>
 					<span tabindex="0" class="form__input-radio-checkmark"></span>
 				</label>
 			</p>
+
+			<span class="form__input-error"></span>
 		</fieldset>
 
 		<p class="form__checkbox-remember">

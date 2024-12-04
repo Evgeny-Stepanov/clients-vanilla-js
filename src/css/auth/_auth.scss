@@ -41,6 +41,10 @@ main {
 		font-size: calc-font-size(1);
 		margin-top: calc-font-size(1.5);
 	}
+
+	&__preload * {
+		transition: none !important;
+	}
 }
 
 .auth__title-span--is-hover {
@@ -48,8 +52,4 @@ main {
 		height: 100% !important;
 		color: var(--color-black);
 	}
-}
-
-.auth--preload * {
-	transition: none !important;
 }
