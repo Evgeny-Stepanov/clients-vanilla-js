@@ -97,49 +97,37 @@
 
 		<fieldset>
 			<legend class="visually-hidden">Кто Вы?</legend>
-			<p>
-				<label for="client-login" class="form__input-radio"
-					>Клиент
-					<input
-						tabindex="-1"
-						type="radio"
-						name="who-login"
-						id="client-login"
-						value="client"
-						required
-					/>
-					<span tabindex="0" class="form__input-radio-checkmark"></span>
-				</label>
-			</p>
-			<p>
-				<label for="admin-login" class="form__input-radio"
-					>Администратор
-					<input
-						tabindex="-1"
-						type="radio"
-						name="who-login"
-						id="admin-login"
-						value="admin"
-						required
-					/>
-					<span tabindex="0" class="form__input-radio-checkmark"></span>
-				</label>
-			</p>
+
+			<input
+				type="radio"
+				name="who-login"
+				id="client-login"
+				value="client"
+				required
+			/>
+			<label for="client-login" class="form__input-radio">Клиент</label>
+
+			<input
+				type="radio"
+				name="who-login"
+				id="admin-login"
+				value="admin"
+				required
+			/>
+			<label for="admin-login" class="form__input-radio">Администратор </label>
 
 			<span class="form__input-error"></span>
 		</fieldset>
 
 		<p class="form__checkbox-remember">
+			<input
+				type="checkbox"
+				name="remember-login"
+				id="remember-login"
+				checked
+			/>
 			<label for="remember-login" class="form__input-checkbox"
 				>Запомнить меня
-				<input
-					tabindex="-1"
-					type="checkbox"
-					name="remember-login"
-					id="remember-login"
-					checked
-				/>
-				<span tabindex="0" class="form__input-checkbox-checkmark"></span>
 			</label>
 		</p>
 
@@ -248,50 +236,40 @@
 
 		<fieldset>
 			<legend class="visually-hidden">Кто Вы?</legend>
-			<p>
-				<label for="client-registration" class="form__input-radio"
-					>Клиент
-					<input
-						tabindex="-1"
-						type="radio"
-						name="who-registration"
-						id="client-registration"
-						value="client"
-						required
-					/>
-					<span tabindex="0" class="form__input-radio-checkmark"></span>
-				</label>
-			</p>
-			<p>
-				<label for="admin-registration" class="form__input-radio"
-					>Администратор
-					<input
-						tabindex="-1"
-						type="radio"
-						name="who-registration"
-						id="admin-registration"
-						value="admin"
-						required
-					/>
-					<span tabindex="0" class="form__input-radio-checkmark"></span>
-				</label>
-			</p>
+
+			<input
+				type="radio"
+				name="who-registration"
+				id="client-registration"
+				value="client"
+				required
+			/>
+			<label for="client-registration" class="form__input-radio">Клиент</label>
+
+			<input
+				type="radio"
+				name="who-registration"
+				id="admin-registration"
+				value="admin"
+				required
+			/>
+			<label for="admin-registration" class="form__input-radio"
+				>Администратор</label
+			>
 
 			<span class="form__input-error"></span>
 		</fieldset>
 
 		<p class="form__checkbox-remember">
+			<input
+				type="checkbox"
+				name="remember-registration"
+				id="remember-registration"
+				checked
+			/>
 			<label for="remember-registration" class="form__input-checkbox"
-				>Запомнить меня
-				<input
-					tabindex="-1"
-					type="checkbox"
-					name="remember-registration"
-					id="remember-registration"
-					checked
-				/>
-				<span tabindex="0" class="form__input-checkbox-checkmark"></span>
-			</label>
+				>Запомнить меня</label
+			>
 		</p>
 
 		<button type="submit">Зарегистрировать</button>

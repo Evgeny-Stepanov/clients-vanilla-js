@@ -91,92 +91,32 @@
 	}
 
 	fieldset {
-		display: flex;
-		justify-content: space-between;
-		gap: 30px;
-		margin: calc-font-size(0.94) 0 0 0;
+		border: none;
 		padding: 0;
 		width: 100%;
-		border: none;
-		p {
-			margin: 0;
-		}
-	}
-
-	&__input-radio,
-	&__input-checkbox {
-		display: block;
-		position: relative;
-		padding-left: calc-font-size(1.56);
-		font-size: calc-font-size(1);
-		user-select: none;
+		margin: calc-font-size(0.94) 0 0 0;
 		input {
-			position: absolute;
+			appearance: none;
+			position: relative;
 			margin: 0;
-			opacity: 0;
-			height: 0;
-			width: 0;
-		}
-		&-checkmark {
-			position: absolute;
-			top: 50%;
-			transform: translateY(-50%);
-			left: 0;
-			display: flex;
-			justify-content: center;
-			align-items: center;
 			width: 20px;
 			height: 20px;
-			border: install-border(2px, var(--color-accent));
-			border-radius: 50%;
-			transition: install-transition(all);
-			&::after {
-				content: "";
-				position: absolute;
-				display: none;
-			}
-		}
-		@include hover {
-			input ~ .form__input-radio-checkmark,
-			input ~ .form__input-checkbox-checkmark {
-				background-color: var(--color-accent);
-			}
-		}
-		& input:checked ~ .form__input-radio-checkmark,
-		& input:checked ~ .form__input-checkbox-checkmark {
 			background-color: transparent;
 			border: install-border(2px, var(--color-accent));
-		}
-		& input:checked ~ .form__input-radio-checkmark::after,
-		& input:checked ~ .form__input-checkbox-checkmark::after {
-			display: block;
-		}
-		& .form__input-radio-checkmark::after {
-			width: 10px;
-			height: 10px;
-			background: var(--color-accent);
 			border-radius: 50%;
-		}
-	}
-
-	&__checkbox-remember {
-		margin-top: calc-font-size(0.94);
-		align-self: flex-start;
-	}
-
-	&__input-checkbox {
-		&-checkmark {
-			padding-bottom: calc-font-size(0.1875);
-			border-radius: 0;
-			&::after {
-				width: 7px;
-				height: 12px;
-				border: solid var(--color-accent);
-				//! Leave the border-width fixed, otherwise it looks worse when changing --font-size
-				border-width: 0 3px 3px 0;
-				border-radius: 0;
-				background-color: transparent;
-				transform: rotate(45deg);
+			&::before {
+				content: "";
+				position: absolute;
+				display: block;
+				width: 10px;
+				height: 10px;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				background-color: var(--color-accent);
+				border-radius: 50%;
+			}
+			&:checked {
 			}
 		}
 	}

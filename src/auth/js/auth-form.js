@@ -29,8 +29,7 @@ class FormsValidation {
 
 	validateInput(input) {
 		const errors = input.validity,
-			errorMessages = [],
-			isValid = errorMessages.length === 0;
+			errorMessages = [];
 
 		Object.entries(this.errorMessages).forEach(
 			([errorType, getErrorMessage]) => {
@@ -41,6 +40,8 @@ class FormsValidation {
 		);
 
 		this.showErrors(input, errorMessages);
+
+		const isValid = errorMessages.length === 0;
 
 		return isValid;
 	}
@@ -70,7 +71,7 @@ class FormsValidation {
 			requiredInputs = [...evt.target.elements].filter(
 				({ required }) => required,
 			);
-		let isValidForm = true;
+		let isFormValid = true;
 		let firstInvalidInput = null;
 
 		if (!isForm) {
@@ -78,10 +79,10 @@ class FormsValidation {
 		}
 
 		requiredInputs.forEach(input => {
-			const isValidInput = this.validateInput(input);
+			const isInputValid = this.validateInput(input);
 
-			if (!isValidInput) {
-				isValidForm = false;
+			if (!isInputValid) {
+				isFormValid = false;
 
 				if (!firstInvalidInput) {
 					firstInvalidInput = input;
@@ -89,7 +90,7 @@ class FormsValidation {
 			}
 		});
 
-		if (!isValidForm) {
+		if (!isFormValid) {
 			evt.preventDefault();
 			firstInvalidInput.focus();
 		}
