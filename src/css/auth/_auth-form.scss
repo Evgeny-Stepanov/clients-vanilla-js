@@ -95,30 +95,6 @@
 		padding: 0;
 		width: 100%;
 		margin: calc-font-size(0.94) 0 0 0;
-		input {
-			appearance: none;
-			position: relative;
-			margin: 0;
-			width: 20px;
-			height: 20px;
-			background-color: transparent;
-			border: install-border(2px, var(--color-accent));
-			border-radius: 50%;
-			&::before {
-				content: "";
-				position: absolute;
-				display: block;
-				width: 10px;
-				height: 10px;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-				background-color: var(--color-accent);
-				border-radius: 50%;
-			}
-			&:checked {
-			}
-		}
 	}
 
 	button {

@@ -1,113 +1,38 @@
-class FormsValidation {
-	selectors = {
-		form: "form",
-		errorsSpan: ".form__input-error",
-	};
-
-	errorMessages = {
-		valueMissing: () => "Заполните это поле",
-		patternMismatch: ({ title }) => title || "Данные не соответствуют формату",
-		tooShort: ({ minLength }) =>
-			`Слишком короткое значение, минимум символов - ${minLength}.`,
-		tooLong: ({ maxLength }) =>
-			`Слишком длинное значение, ограничение символов - ${maxLength}.`,
-	};
-
-	constructor() {
-		this.bindEvents();
-	}
-
-	showErrors(input, errorMessages) {
-		const errorsSpan = input.parentElement.querySelector(
-			this.selectors.errorsSpan,
+function validateForm(form, formSelector) {
+	const loginInput = document.querySelector(".form__input-name input"),
+		passwordInput = document.querySelector(".form__input-password input"),
+		radioInputs = document.querySelectorAll(
+			`${formSelector} fieldset input[type='radio']`,
+		),
+		submitButton = document.querySelector(
+			`${formSelector} button[type='submit']`,
 		);
 
-		errorsSpan.innerHTML = errorMessages
-			.map(message => `<span class="form__input-error">${message}</span>`)
-			.join("");
-	}
-
-	validateInput(input) {
-		const errors = input.validity,
+	function checkValidityState(input) {
+		const short = input.validity.tooShort,
+			long = input.validity.tooLong,
+			noPattern = input.validity.patternMismatch,
+			noValue = input.validity.valueMissing,
 			errorMessages = [];
 
-		Object.entries(this.errorMessages).forEach(
-			([errorType, getErrorMessage]) => {
-				if (errors[errorType]) {
-					errorMessages.push(getErrorMessage(input));
-				}
-			},
-		);
-
-		this.showErrors(input, errorMessages);
-
-		const isValid = errorMessages.length === 0;
-
-		return isValid;
-	}
-
-	onBlur(evt) {
-		const { target } = evt,
-			isFormInput = target.closest(this.selectors.form),
-			isRequired = target.required;
-
-		if (isFormInput && isRequired) {
-			this.validateInput(target);
-		}
-	}
-
-	onChange(evt) {
-		const { target } = evt,
-			isRequired = target.required,
-			isRadioType = ["radio"].includes(target.type);
-
-		if (isRadioType && isRequired) {
-			this.validateInput(target);
-		}
-	}
-
-	onSubmit(evt) {
-		const isForm = evt.target.matches(this.selectors.form),
-			requiredInputs = [...evt.target.elements].filter(
-				({ required }) => required,
-			);
-		let isFormValid = true;
-		let firstInvalidInput = null;
-
-		if (!isForm) {
-			return;
+		if (short || long || noPattern) {
+			errorMessages.push(`${input.title}`);
+		} else if (noValue) {
+			errorMessages.push("Заполните это поле");
 		}
 
-		requiredInputs.forEach(input => {
-			const isInputValid = this.validateInput(input);
+		return errorMessages;
+	}
 
-			if (!isInputValid) {
-				isFormValid = false;
-
-				if (!firstInvalidInput) {
-					firstInvalidInput = input;
-				}
-			}
+	function validateOnBlur(input) {
+		input.addEventListener("blur", () => {
+			checkValidityState(input);
+			console.log(input.required);
 		});
-
-		if (!isFormValid) {
-			evt.preventDefault();
-			firstInvalidInput.focus();
-		}
 	}
 
-	bindEvents() {
-		document.addEventListener(
-			"blur",
-			evt => {
-				this.onBlur(evt);
-			},
-			{ capture: true },
-		);
-
-		document.addEventListener("change", evt => this.onChange(evt));
-		document.addEventListener("submit", evt => this.onSubmit(evt));
-	}
+	validateOnBlur(loginInput);
+	validateOnBlur(passwordInput);
 }
 
-new FormsValidation();
+validateForm(document.querySelector(".form--login"), ".form--login");
