@@ -12,22 +12,45 @@ function validateForm(form, formSelector) {
 		const short = input.validity.tooShort,
 			long = input.validity.tooLong,
 			noPattern = input.validity.patternMismatch,
-			noValue = input.validity.valueMissing,
-			errorMessages = [];
+			noValue = input.validity.valueMissing;
+
+		let errorMessage = "";
 
 		if (short || long || noPattern) {
-			errorMessages.push(`${input.title}`);
+			errorMessage = `${input.title}`;
 		} else if (noValue) {
-			errorMessages.push("Заполните это поле");
+			errorMessage = "Заполните поле";
 		}
 
-		return errorMessages;
+		return errorMessage;
+	}
+
+	function changeInvalidInputColor(message, input) {
+		if (message) {
+			input.classList.add("form__input--is-invalid");
+		} else {
+			input.classList.remove("form__input--is-invalid");
+		}
+	}
+
+	function showErrorMessage(message, input) {
+		let messageSpan = input.parentElement.querySelector(".form__input-error");
+		messageSpan.textContent = message;
 	}
 
 	function validateOnBlur(input) {
+		let iconSpan = input.parentElement.querySelector(".form__input-icon-span");
+
 		input.addEventListener("blur", () => {
-			checkValidityState(input);
-			console.log(input.required);
+			showErrorMessage(checkValidityState(input), input);
+			changeInvalidInputColor(checkValidityState(input), input);
+			iconSpan.classList.remove("form__input-span--is-invalid-focus");
+
+			input.addEventListener("focus", () => {
+				if (checkValidityState(input)) {
+					iconSpan.classList.add("form__input-span--is-invalid-focus");
+				}
+			});
 		});
 	}
 

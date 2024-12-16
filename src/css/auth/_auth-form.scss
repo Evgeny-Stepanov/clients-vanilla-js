@@ -177,6 +177,12 @@
 	display: inline !important;
 }
 
+.form__input-span--is-invalid-focus {
+	path {
+		fill: var(--color-red-notif) !important;
+	}
+}
+
 .form__input--is-invalid {
 	border: install-border(2px, var(--color-red-notif)) !important;
 }

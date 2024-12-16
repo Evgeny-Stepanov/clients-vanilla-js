@@ -27,7 +27,7 @@ function toggleInputTypeAndChangeIcon() {
 			"input[data-input='password']",
 		),
 		passwordIconParents = document.querySelectorAll(
-			"input[data-input='password'] ~ span",
+			"input[data-input='password'] ~ span.form__input-icon-span",
 		),
 		closeEyeIcons = document.querySelectorAll("svg[data-eye='close']"),
 		openEyeIcons = document.querySelectorAll("svg[data-eye='open']");
