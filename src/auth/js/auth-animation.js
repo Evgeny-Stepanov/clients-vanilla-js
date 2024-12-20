@@ -3,25 +3,6 @@ window.addEventListener("load", () => {
 	document.body.classList.remove("auth__preload");
 });
 
-function changeInputIconColor() {
-	const inputsParents = document.querySelectorAll("p[data-input='parent']"),
-		inputs = document.querySelectorAll("p[data-input='parent'] input");
-
-	inputs.forEach((input, index) => {
-		input.addEventListener("focus", () => {
-			inputsParents[index]
-				.querySelector("span")
-				.classList.add("form__input-span--is-focus");
-		});
-
-		input.addEventListener("blur", () => {
-			inputsParents[index]
-				.querySelector("span")
-				.classList.remove("form__input-span--is-focus");
-		});
-	});
-}
-
 function toggleInputTypeAndChangeIcon() {
 	const passwordInputs = document.querySelectorAll(
 			"input[data-input='password']",
@@ -86,7 +67,6 @@ function animateCardFlip() {
 	});
 }
 
-changeInputIconColor();
 toggleInputTypeAndChangeIcon();
 changeClientsTextColor();
 animateCardFlip();

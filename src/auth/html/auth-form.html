@@ -98,29 +98,31 @@
 		<fieldset>
 			<legend class="visually-hidden">Кто Вы?</legend>
 
-			<p>
-				<input
-					type="radio"
-					name="who-login"
-					id="client-login"
-					value="client"
-					required
-				/>
-				<label for="client-login" class="form__input-radio">Клиент</label>
-			</p>
+			<div class="form__fieldset-inputs-wrapper">
+				<p>
+					<input
+						type="radio"
+						name="who-login"
+						id="client-login"
+						value="client"
+						required
+					/>
+					<label for="client-login" class="form__input-radio">Клиент</label>
+				</p>
 
-			<p>
-				<input
-					type="radio"
-					name="who-login"
-					id="admin-login"
-					value="admin"
-					required
-				/>
-				<label for="admin-login" class="form__input-radio"
-					>Администратор
-				</label>
-			</p>
+				<p>
+					<input
+						type="radio"
+						name="who-login"
+						id="admin-login"
+						value="admin"
+						required
+					/>
+					<label for="admin-login" class="form__input-radio"
+						>Администратор
+					</label>
+				</p>
+			</div>
 
 			<span class="form__input-error"></span>
 		</fieldset>

@@ -97,6 +97,10 @@
 		margin: calc-font-size(0.94) 0 0 0;
 	}
 
+	&__fieldset-inputs-wrapper {
+		border-radius: var(--border-radius-small);
+	}
+
 	button {
 		position: relative;
 		margin-top: calc-font-size(0.94);
@@ -183,7 +187,8 @@
 	}
 }
 
-.form__input--is-invalid {
+.form__input--is-invalid,
+.form__fieldset-inputs-wrapper--is-invalid {
 	border: install-border(2px, var(--color-red-notif)) !important;
 }
 
