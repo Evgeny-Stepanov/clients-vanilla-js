@@ -12,7 +12,7 @@ function validateForm(formSelector) {
 			`${formSelector} button[type="submit"]`,
 		);
 
-	function checkValidityState(input) {
+	function createErrorMessage(input) {
 		const short = input.validity.tooShort,
 			long = input.validity.tooLong,
 			noPattern = input.validity.patternMismatch,
@@ -33,6 +33,35 @@ function validateForm(formSelector) {
 		return errorMessage;
 	}
 
+	function showErrorMessage(message, input) {
+		let messageSpan;
+
+		if (input.type === "radio") {
+			messageSpan = document.querySelector("fieldset .form__input-error");
+		} else {
+			messageSpan = input.parentElement.querySelector(".form__input-error");
+		}
+
+		messageSpan.textContent = message;
+	}
+
+	function changeInputColor(input) {
+		input.addEventListener("focus", () => {
+			input.classList.add("form__input--is-focus");
+			changeIconInputColor(false, input);
+		});
+
+		input.addEventListener("blur", () => {
+			validateOnBlur(input);
+			removeIconInputColor(input);
+
+			//* It's working
+			/* 			input.addEventListener("focus", () => {
+				changeIconInputColor(createErrorMessage(input), input);
+			}); */
+		});
+	}
+
 	function changeInvalidInputColor(message, input) {
 		if (message && input.type !== "radio") {
 			input.classList.add("form__input--is-invalid");
@@ -49,46 +78,66 @@ function validateForm(formSelector) {
 		}
 	}
 
-	function showErrorMessage(message, input) {
-		let messageSpan;
-
-		if (input.type === "radio") {
-			messageSpan = document.querySelector("fieldset .form__input-error");
+	function changeIconInputColor(message, input) {
+		if (message) {
+			input.parentElement
+				.querySelector(".form__input-icon-span")
+				.classList.add("form__input-span--is-invalid-focus");
 		} else {
-			messageSpan = input.parentElement.querySelector(".form__input-error");
+			input.parentElement
+				.querySelector(".form__input-icon-span")
+				.classList.add("form__input-span--is-focus");
+		}
+	}
+
+	function removeIconInputColor(input) {
+		if (
+			input.parentElement
+				.querySelector(".form__input-icon-span")
+				.classList.contains("form__input-span--is-focus")
+		) {
+			input.parentElement
+				.querySelector(".form__input-icon-span")
+				.classList.remove("form__input-span--is-focus");
 		}
 
-		messageSpan.textContent = message;
+		if (
+			input.parentElement
+				.querySelector(".form__input-icon-span")
+				.classList.contains("form__input-span--is-invalid-focus")
+		) {
+			input.parentElement
+				.querySelector(".form__input-icon-span")
+				.classList.remove("form__input-span--is-invalid-focus");
+		}
 	}
 
 	function validateOnBlur(input) {
-		input.addEventListener("blur", () => {
-			showErrorMessage(checkValidityState(input), input);
-			changeInvalidInputColor(checkValidityState(input), input);
-		});
+		showErrorMessage(createErrorMessage(input), input);
+		changeInvalidInputColor(createErrorMessage(input), input);
 	}
 
 	function validateOnSubmit(button) {
 		button.addEventListener("click", evt => {
 			evt.preventDefault();
 
-			if (checkValidityState(loginInput)) {
-				showErrorMessage(checkValidityState(loginInput), loginInput);
-				changeInvalidInputColor(checkValidityState(loginInput), loginInput);
+			if (createErrorMessage(loginInput)) {
+				showErrorMessage(createErrorMessage(loginInput), loginInput);
+				changeInvalidInputColor(createErrorMessage(loginInput), loginInput);
 			}
 
-			if (checkValidityState(passwordInput)) {
-				showErrorMessage(checkValidityState(passwordInput), passwordInput);
+			if (createErrorMessage(passwordInput)) {
+				showErrorMessage(createErrorMessage(passwordInput), passwordInput);
 				changeInvalidInputColor(
-					checkValidityState(passwordInput),
+					createErrorMessage(passwordInput),
 					passwordInput,
 				);
 			}
 
 			radioInputs.forEach(radioInput => {
-				if (checkValidityState(radioInput)) {
-					showErrorMessage(checkValidityState(radioInput), radioInput);
-					changeInvalidInputColor(checkValidityState(radioInput), radioInput);
+				if (createErrorMessage(radioInput)) {
+					showErrorMessage(createErrorMessage(radioInput), radioInput);
+					changeInvalidInputColor(createErrorMessage(radioInput), radioInput);
 				}
 			});
 
@@ -96,11 +145,9 @@ function validateForm(formSelector) {
 		});
 	}
 
-	validateOnBlur(loginInput);
-	validateOnBlur(passwordInput);
+	changeInputColor(loginInput);
+	changeInputColor(passwordInput);
 	validateOnSubmit(submitButton);
-
-	
 }
 
 validateForm(".form--login");
