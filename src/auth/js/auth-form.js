@@ -26,7 +26,7 @@ function validateForm(formSelector) {
 			errorMessage = "Заполните поле";
 		}
 
-		if (input.type === "radio" && !input.checked) {
+		if (input.type === "radio") {
 			errorMessage = "Выберите кто вы";
 		}
 
@@ -47,18 +47,18 @@ function validateForm(formSelector) {
 
 	function changeInputColor(input) {
 		input.addEventListener("focus", () => {
-			input.classList.add("form__input--is-focus");
-			changeIconInputColor(false, input);
+			if (!input.classList.contains("form__input--is-invalid")) {
+				input.classList.add("form__input--is-focus");
+				changeIconInputColor("", input);
+			} else {
+				changeIconInputColor(createErrorMessage(input), input);
+			}
 		});
 
 		input.addEventListener("blur", () => {
+			input.classList.remove("form__input--is-focus");
 			validateOnBlur(input);
 			removeIconInputColor(input);
-
-			//* It's working
-			/* 			input.addEventListener("focus", () => {
-				changeIconInputColor(createErrorMessage(input), input);
-			}); */
 		});
 	}
 
@@ -73,8 +73,10 @@ function validateForm(formSelector) {
 			document
 				.querySelector(".form__fieldset-inputs-wrapper")
 				.classList.add("form__fieldset-inputs-wrapper--is-invalid");
-		} else {
-			input.classList.remove("form__fieldset-inputs-wrapper--is-invalid");
+		} else if (!message && input.type === "radio") {
+			document
+				.querySelector(".form__fieldset-inputs-wrapper")
+				.classList.remove("form__fieldset-inputs-wrapper--is-invalid");
 		}
 	}
 
@@ -121,6 +123,8 @@ function validateForm(formSelector) {
 		button.addEventListener("click", evt => {
 			evt.preventDefault();
 
+			let falseCheckedCount = 0;
+
 			if (createErrorMessage(loginInput)) {
 				showErrorMessage(createErrorMessage(loginInput), loginInput);
 				changeInvalidInputColor(createErrorMessage(loginInput), loginInput);
@@ -135,9 +139,16 @@ function validateForm(formSelector) {
 			}
 
 			radioInputs.forEach(radioInput => {
-				if (createErrorMessage(radioInput)) {
+				if (radioInput.checked === false) {
+					falseCheckedCount++;
+				}
+
+				if (falseCheckedCount === 2) {
 					showErrorMessage(createErrorMessage(radioInput), radioInput);
 					changeInvalidInputColor(createErrorMessage(radioInput), radioInput);
+				} else {
+					showErrorMessage("", radioInput);
+					changeInvalidInputColor("", radioInput);
 				}
 			});
 
