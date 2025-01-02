@@ -51,16 +51,35 @@ function changeThemeColor() {
 	if (localStorage.getItem("theme-color")) {
 		document.body.classList.add("white-theme");
 		checkboxInput.checked = true;
+		changeWhiteBgColorRadioButton();
 	}
 
 	checkboxInput.addEventListener("change", () => {
 		if (checkboxInput.checked) {
 			localStorage.setItem("theme-color", "white");
 			document.body.classList.add("white-theme");
+			changeWhiteBgColorRadioButton();
 		} else {
 			localStorage.removeItem("theme-color");
 			document.body.classList.remove("white-theme");
+			changeBlackBgColorRadioButton();
 		}
+	});
+}
+
+function changeWhiteBgColorRadioButton() {
+	const radioLabels = document.querySelectorAll("fieldset p");
+
+	radioLabels.forEach(radioLabel => {
+		radioLabel.classList.add("form__input-radio--is-white-theme");
+	});
+}
+
+function changeBlackBgColorRadioButton() {
+	const radioLabels = document.querySelectorAll("fieldset p");
+
+	radioLabels.forEach(radioLabel => {
+		radioLabel.classList.remove("form__input-radio--is-white-theme");
 	});
 }
 
